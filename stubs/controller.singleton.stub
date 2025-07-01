@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+
+class {{ class }}
+{
+    public function create(): never
+    {
+        abort(404);
+    }
+
+    public function store(Request $request): never
+    {
+        abort(404);
+    }
+
+    public function show()
+    {
+        //
+    }
+
+    public function edit()
+    {
+        //
+    }
+
+    public function update(Request $request)
+    {
+        //
+    }
+
+    public function destroy(): never
+    {
+        abort(404);
+    }
+}

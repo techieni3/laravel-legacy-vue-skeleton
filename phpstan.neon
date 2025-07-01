@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    level: max
+
+    paths:
+        - app
+        - config
+        - bootstrap
+        - database/factories
+        - routes

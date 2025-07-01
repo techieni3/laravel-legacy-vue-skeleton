@@ -1,0 +1,102 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "techieni3/laravel-legacy-skeleton",
+    "type": "project",
+    "description": "Laravel 12 starter kit built on the Laravel 10 application skeleton, designed for modern development workflows.",
+    "keywords": ["laravel",  "starter kit"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.10.1"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^3.0",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.41",
+        "laravel/telescope": "^5.9",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.8",
+        "pestphp/pest-plugin-laravel": "^3.2",
+        "pestphp/pest-plugin-type-coverage": "^3.5",
+        "rector/rector": "^2.1",
+        "techieni3/laravel-stubs": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan publish:stubs --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"if (!file_exists('.env')) { copy('.env.example', '.env'); \\$env = file_get_contents('.env'); \\$env = preg_replace('/^APP_ENV=.*$/m', 'APP_ENV=local', \\$env); \\$env = preg_replace('/^APP_DEBUG=.*$/m', 'APP_DEBUG=true', \\$env); file_put_contents('.env', \\$env); }\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test --parallel"
+        ],
+        "format": [
+           "rector",
+            "pint"
+        ],
+        "test:format": "pint --test",
+        "test:refactor": "rector --dry-run",
+        "test:types": "phpstan analyse",
+        "test:arch": "pest --filter=arch",
+        "test:type-coverage": "pest --type-coverage --min=100",
+        "ci": [
+            "@test:refactor",
+            "@test:format",
+            "@test:types",
+            "@test:type-coverage",
+            "@test"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/telescope"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
