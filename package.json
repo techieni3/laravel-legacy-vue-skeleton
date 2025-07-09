@@ -4,23 +4,43 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:ssr": "vite build && vite build --ssr",
     "dev": "vite",
+    "format": "prettier --write resources/",
+    "format:check": "prettier --check resources/",
     "format-php": "composer format",
+    "lint": "eslint resources/js/ --fix",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
+    "@inertiajs/vue3": "^2.0.14",
     "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/eslint-config-prettier": "^10.2.0",
     "axios": "^1.8.2",
     "concurrently": "^9.0.1",
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-vue": "^10.3.0",
+    "globals": "^16.3.0",
     "husky": "^9.1.7",
     "laravel-vite-plugin": "^1.2.0",
     "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.13",
     "tailwindcss": "^4.0.0",
-    "vite": "^6.2.4"
+    "vite": "^6.2.4",
+    "vue": "^3.5.17",
+    "ziggy-js": "^2.5.3"
   },
   "lint-staged": {
     "*.php": [
       "npm run format-php"
+    ],
+    "*.{js,ts,vue,html}": [
+      "prettier --write --ignore-unknown"
     ]
   }
 }

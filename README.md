@@ -8,19 +8,14 @@ This is a Laravel 12 starter kit that builds upon the legacy Laravel 10 applicat
 - Type-safe development with 100% type coverage
 - Clean, test-driven architecture with Pest
 - Ready-to-use scripts for formatting, refactoring, and CI checks
+- Inertia and vue3 pre configured
 
 Ideal for teams or individuals looking to start new Laravel 12 projects with a consistent and maintainable setup.
 
 ## Quick Start
 
 ```bash
-laravel new example --using=techieni3/laravel-legacy-skeleton
-```
-
-OR
-
-```bash
-composer create-project techieni3/laravel-legacy-skeleton example
+laravel new example --using=techieni3/laravel-legacy-vue-skeleton
 ```
 
 ## Security

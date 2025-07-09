@@ -1,15 +1,17 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "techieni3/laravel-legacy-skeleton",
+    "name": "techieni3/laravel-legacy-vue-skeleton",
     "type": "project",
     "description": "Laravel 12 starter kit built on the Laravel 10 application skeleton, designed for modern development workflows.",
     "keywords": ["laravel",  "starter kit"],
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^2.10.1",
+        "tightenco/ziggy": "^2.5"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
